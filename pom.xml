@@ -57,31 +57,32 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version> <!-- Bu versiyon Java 18 ile uyumludur, ancak sistemindeki Maven'in 3.9.5 ile çalıştığını belirttiğin için bu versiyon kullanılabilir -->
+                <version>3.8.1</version>
                 <configuration>
-                    <release>18</release> <!-- Java 18 için 'release' parametresi kullanılır -->
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <optimize>true</optimize>
                     <debug>true</debug>
                 </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.3.0</version> <!-- En son stabil versiyon; gerektiğinde güncelle -->
+                <version>3.3.0</version>
                 <configuration>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
-                    <finalName>HwCI-1.0-SNAPSHOT.jar</finalName>
+                    <finalName>HwCI-1.0-SNAPSHOT</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
                     <archive>
                         <manifest>
-                            <mainClass>org.example.MainClass</mainClass> <!-- Burası senin ana sınıfının tam yolunu yansıtmalı -->
+                            <mainClass>App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
                 <executions>
                     <execution>
-                        <id>make-assembly</id> <!-- execution id'sini anlamlı bir isimle değiştirdim -->
+                        <id>build-jar-with-dependencies</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
@@ -91,6 +92,7 @@
             </plugin>
         </plugins>
     </build>
+
 
 
 
